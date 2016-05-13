@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset="UTF-8">
+	  <title>Smash Faces</title>
+	  <link rel="stylesheet" href="css/main.css">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<h1>Smash Faces</h1>
+				<p>Bienvenidos al juego de Smash Faces, tu misión es poder identificar a todas tus compañeras de clase ingresando su nombre. Tienes 5 oportunidades antes de perder 1 punto y pasar a la siguiente</p>
+			</div>
+		</header>
+		<section>
+			<div class="container">
+				<div class="row mt-30">
+					<div class="col-xs-4">
+						<span>Elige tu sede</span>
+						<select name="sedes" id="">
+							<option value="Lima">Lima</option>
+							<option value="Arequipa">Arequipa</option>
+							<option value="Chile">Chile</option>
+						</select>
+					</div>
+					<div class="col-xs-8">
+						<span>Puntos: </span>
+						<span>5</span>
+					</div>
+				</div>
+				<div class="row mt-30">
+					<div class="col-xs-4">
+						<div class="foto">
+							<img id="coder" src="fotos/Zazil Aurora Martinez.JPG" alt="coder">
+						</div>
+					</div>
+					<div class="col-xs-8">
+						<input type="text" placeholder="Ingresa el nombre aquí" class="nombre">
+						<button type="button" class="btn btn-success comprobar">Comprobar</button>
+						<p class="mt-30 mensaje">Bien! Adivinaste...</p>
+					</div>
+				</div>
+			</div>
+
+			
+				
+		</section>
+		<script   src="https://code.jquery.com/jquery-1.12.3.js"   integrity="sha256-1XMpEtA4eKXNNpXcJ1pmMPs8JV+nwLdEqwiJeCQEkyc="   crossorigin="anonymous"></script>
+		<script src="js/main.js"></script>
+
+	</body>
+</html>
