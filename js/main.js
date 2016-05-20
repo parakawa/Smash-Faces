@@ -21,10 +21,31 @@ var arraySede;
     default: 
           alert("Selecciona una sede")
            }
-  var i=Math.floor((Math.random() * arraySede.length) + 0)
 
-  $("#coder").attr("src","fotos/"+sede+"/"+arraySede[i].image)
-  $("#coder").attr("alt",arraySede[i].name)
+  function makeUniqueRandom() {
+  var uniqueRandoms = [];
+  var numRandoms = arraySede.length;
+
+    // refill the array if needed
+    if (!uniqueRandoms.length) {
+        for (var i = 0; i < numRandoms; i++) {
+            uniqueRandoms.push(i);
+        }
+    }
+    var index = Math.floor(Math.random() * uniqueRandoms.length);
+    var val = uniqueRandoms[index];
+
+    // now remove that value from the array
+    uniqueRandoms.splice(index, 1);
+
+    return val;
+
+}
+
+  var indice=makeUniqueRandom()
+
+  $("#coder").attr("src","fotos/"+sede+"/"+arraySede[indice].image)
+  $("#coder").attr("alt",arraySede[indice].name)
 }
 
 function comprobar(){
@@ -59,63 +80,3 @@ function clean(){
   $(".nombre").val("")
   $(".nombre").focus()
 }
-
-/*function main(arraySede,sede){
-      var nombre=$(".nombre").val()
-      var intento=0 ;
-       for(i=0; i<arraySede.length;i++){ 
-              img="fotos/"+sede+"/"+arraySede[i].image
-              if(foto==img)
-                if(nombre==arraySede[i].name){ 
-                    $(".mensaje").text("Hey, conoces bien a "+arraySede[i].name+sede) 
-                    puntaje=puntaje+5
-                    $("#puntos").html(puntaje)
-                    clean()
-                    $("#coder").attr("src","fotos/"+sede+"/"+arraySede[Math.floor((Math.random() * arraySede.length) + 0)].image)
-                    }   
-                else{
-                    if(intento<=5){ 
-                    
-                    $(".mensaje").text("Tienes otro intento"+" Un secreto: su nombre es "+arraySede[i].name)
-                    intento=intento+1
-                    }
-                    else{
-                      puntaje=puntaje-1
-                      $(".mensaje").text("Lo sentimos, ya gastaste todos los intentos posibles")
-                      $("#puntos").html(puntaje)
-                      $("#coder").attr("src","fotos/"+sede+"/"+arraySede[Math.floor((Math.random() * arraySede.length) + 0)].image)
-                  }
-                }   
-             }
-}*/
-
-/*function comprobar(){
-  var sedes=$("#sedes").val()
-  switch(sedes){
-    case "mexico":
-          main(mexico,sedes)         
-          break;
-    default: 
-          main(arequipa,sedes) 
-           }
-}
-
-//$("#coder").attr("src","fotos/Ana Maria Barbosa.JPG")
-
-  var puntaje=0;
-  var foto=$("#coder").attr("src")
-  var img;
-
-  $(".comprobar").on("click",comprobar)
-  $("#puntos").html(puntaje)*/
-
-
-/*if(k==5){
-      puntos=puntos-1
-      k=0
-      cargarImagen()
-      $(".mensaje").html("Superaste los 5 intentos. Su nombre era "+name+". 
-        Tienes 1 punto menos")
-      cargarPuntos()
-    }
-*/
