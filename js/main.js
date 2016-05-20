@@ -1,38 +1,58 @@
+var puntos=0;
+var k=0;
 
-//$("#coder").attr("src","fotos/Ana Maria Barbosa.JPG")
-
-  var puntaje=0;
-  var tamAre=arequipa.length
-  var foto=$("#coder").attr("src")
-  var img;
  $(function(){
-  
+  $("#sedes").on("change",cargarImagen)
   $(".comprobar").on("click",comprobar)
-  $("#puntos").html(puntaje)
-  
+  cargarPuntos()
+
  })
 
-function comprobar(){
-  
-  
-  var sedes=$("#sedes").val()
-  
-  
-  
-  switch(sedes){
+function cargarImagen(){
+var sede=$("#sedes").val()
+var arraySede;
+  switch(sede){
     case "mexico":
-          main(mexico,sedes) 
-          
+          arraySede=mexico        
+          break;
+    case "arequipa":
+          arraySede=arequipa      
           break;
     default: 
-          main(arequipa,sedes) 
+          alert("Selecciona una sede")
            }
+  var i=Math.floor((Math.random() * arraySede.length) + 0)
 
-
+  $("#coder").attr("src","fotos/"+sede+"/"+arraySede[i].image)
+  $("#coder").attr("alt",arraySede[i].name)
 }
 
-function cargarImagen(){
-  
+function comprobar(){
+  var nombre=$(".nombre").val()
+  var name=$("#coder").attr("alt")
+  if(nombre==name){ 
+    $(".mensaje").html("Conoces bien a "+name+"!"+" Sumas +5 a tu puntaje.")
+    puntos=puntos+5
+    cargarPuntos()
+    cargarImagen()
+    clean()
+    }
+  else{
+    $(".mensaje").html("No es correcto. Puedes intentarlo de nuevo")
+    k++
+    clean()
+      if(k==5){
+      puntos=puntos-1
+      k=0
+      $(".mensaje").html("Excediste los intentos permitidos. Tienes un punto menos")
+      cargarPuntos()
+      cargarImagen()
+      }
+  }
+}
+
+function cargarPuntos(){
+  $("#puntos").html(puntos)
 }
 
 function clean(){
@@ -40,7 +60,7 @@ function clean(){
   $(".nombre").focus()
 }
 
-function main(arraySede,sede){
+/*function main(arraySede,sede){
       var nombre=$(".nombre").val()
       var intento=0 ;
        for(i=0; i<arraySede.length;i++){ 
@@ -65,11 +85,37 @@ function main(arraySede,sede){
                       $("#puntos").html(puntaje)
                       $("#coder").attr("src","fotos/"+sede+"/"+arraySede[Math.floor((Math.random() * arraySede.length) + 0)].image)
                   }
-
-                }
-              
+                }   
              }
+}*/
+
+/*function comprobar(){
+  var sedes=$("#sedes").val()
+  switch(sedes){
+    case "mexico":
+          main(mexico,sedes)         
+          break;
+    default: 
+          main(arequipa,sedes) 
+           }
 }
 
+//$("#coder").attr("src","fotos/Ana Maria Barbosa.JPG")
+
+  var puntaje=0;
+  var foto=$("#coder").attr("src")
+  var img;
+
+  $(".comprobar").on("click",comprobar)
+  $("#puntos").html(puntaje)*/
 
 
+/*if(k==5){
+      puntos=puntos-1
+      k=0
+      cargarImagen()
+      $(".mensaje").html("Superaste los 5 intentos. Su nombre era "+name+". 
+        Tienes 1 punto menos")
+      cargarPuntos()
+    }
+*/
